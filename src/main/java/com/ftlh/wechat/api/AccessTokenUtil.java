@@ -19,7 +19,7 @@ public class AccessTokenUtil {
 	@Autowired
 	private HttpClientService service;
 	private static final Logger logger = LoggerFactory.getLogger(AccessToken.class);
-
+    
 	public AccessToken getAccessToken() {
 		String appid = PropertyUtil.getProperty("appid");
 		String secret = PropertyUtil.getProperty("secret");
