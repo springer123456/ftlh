@@ -19,7 +19,7 @@ public class JsApiSign {
 	 *            凭据
 	 * @param url
 	 *            界面请求地址
-	 * @return V型知识库 www.vxzsk.com
+	 * @return 
 	 */
 	public static Map<String, String> sign(String jsapi_ticket, String url) {
 		Map<String, String> ret = new HashMap<String, String>();
@@ -48,7 +48,6 @@ public class JsApiSign {
 		ret.put("nonceStr", nonce_str);
 		ret.put("timestamp", timestamp);
 		ret.put("signature", signature);
-
 		return ret;
 	}
 
