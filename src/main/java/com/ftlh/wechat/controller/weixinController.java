@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class weixinController {
 	private final static String TOKEN = "amtfjlsj";
 
-	@RequestMapping("/wxauth")
+	@RequestMapping("/wxbtauth")
 	@ResponseBody
 	public String wxreg(@RequestParam String signature, /*
 														 * 微信加密签名signature结合了开发者填写的token参数和请求中的timestamp参数

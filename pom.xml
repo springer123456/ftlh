@@ -149,6 +149,12 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
+<!-- https://mvnrepository.com/artifact/xstream/xstream -->
+<dependency>
+    <groupId>xstream</groupId>
+    <artifactId>xstream</artifactId>
+    <version>1.2.2</version>
+</dependency>
 
 		<!-- Test -->
 		<dependency>
