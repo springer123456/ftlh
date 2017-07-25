@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+		location="C:\Users\caohaiwang\.m2\repository\mysql\mysql-connector-java\5.1.42\mysql-connector-java-5.1.42.jar" />
+	<context id="context1">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://caohaiwang.mysql.rds.aliyuncs.com:3306/ftlh"
+			userId="ftlh" password="FTLHftlh1234!" />
+		<javaModelGenerator targetPackage="com.ftlh.wechat.device.model"
+			targetProject="ftlh">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.ftlh.wechat.device.mapping"
+			targetProject="ftlh">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- \u751F\u6210DAO\u7684\u5305\u540D\u548C\u4F4D\u7F6E -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.ftlh.wechat.device.dao" targetProject="ftlh">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+          <table tableName="user_device" domainObjectName="UserDevice" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" /> 
+		 
+			<!-- 
+			<table tableName="taxvehiclevessel" domainObjectName="taxvehiclevessel" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" />
+			
+			<table tableName="taxurbanland" 
+			domainObjectName="taxurbanland" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> 
+			<table tableName="taxtobacco" domainObjectName="taxtobacco" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" />
+			 <table tableName="taxstamp" domainObjectName="taxstamp" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" /> 
+			
+			
+			<table tableName="taxresource" 
+			domainObjectName="taxresource" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> 
+			<table tableName="taxpersonalincome" domainObjectName="taxpersonalincome" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" /> 
+			<table tableName="taxlandvalueincrement" 
+			domainObjectName="taxlandvalueincrement" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/>
+			 <table tableName="taxinfo" domainObjectName="taxinfo" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" /> 
+			<table tableName="taxfarmland" domainObjectName="taxfarmland" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" />
+			 <table tableName="taxenterpriseincome" 
+			domainObjectName="taxenterpriseincome" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> 
+			<table tableName="taxdeed" domainObjectName="taxdeed" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" />
+			 <table tableName="taxcitymaintenance" domainObjectName="taxcitymaintenance" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" />
+			<table tableName="taxbuilding" domainObjectName="taxbuilding" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" />
+					
+			 <table tableName="feeinfo" 
+			domainObjectName="feeinfo" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> 
+			<table tableName="bureau" domainObjectName="Bureau" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" /> 
+			<table tableName="officer" domainObjectName="officer" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" /> 
+			<table tableName="orgaccp" 
+			domainObjectName="orgaccp" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> 
+	
+			<table tableName="orgbankacc" domainObjectName="orgbankacc" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" /> <table tableName="orgbureau" domainObjectName="orgbureau" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" /> <table tableName="orgcal" 
+			domainObjectName="orgcal" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> <table tableName="orgfm" domainObjectName="orgfm" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" /> <table tableName="orginvoice" domainObjectName="orginvoice" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" /> <table tableName="orgsheetdeclare" 
+			domainObjectName="orgsheetdeclare" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> <table tableName="orgtaxcredit" domainObjectName="orgtaxcredit" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" /> <table tableName="orgtaxfee" domainObjectName="orgtaxfee" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" /> <table tableName="personalcal" 
+			domainObjectName="personalcal" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> <table tableName="settings" domainObjectName="settings" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" /> <table tableName="taxbuilding" domainObjectName="taxbuilding" 
+			enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" 
+			enableSelectByExample="false" selectByExampleQueryId="false" /> <table tableName="taxbusiness" 
+			domainObjectName="taxbusiness" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" 
+			/> <table tableName="orgaccp" domainObjectName="orgaccp" enableCountByExample="false" 
+			enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+			selectByExampleQueryId="false" /> -->
+	</context>
+</generatorConfiguration>
