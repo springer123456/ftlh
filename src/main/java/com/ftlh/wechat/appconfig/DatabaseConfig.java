@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.log4j.Log4jImpl;
 import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.session.LocalCacheScope;
 import org.aspectj.lang.annotation.Pointcut;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
@@ -142,6 +143,7 @@ public class DatabaseConfig {
 		configuration.setAggressiveLazyLoading(true);
 	//	configuration.setLogImpl((Class<? extends Log>) Log4j2Impl.class);
 		configuration.setCacheEnabled(true);
+		configuration.setLocalCacheScope(LocalCacheScope.SESSION);
 		configuration.setLogImpl( Log4jImpl.class);
 		return configuration;
 		
@@ -157,7 +159,9 @@ public class DatabaseConfig {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		sqlSessionFactory.setConfiguration(getConfiguration());
+	//	sqlSessionFactory.setCache(cache);
 	//	sqlSessionFactory.setMapperLocations(mapperLocations);
 		return sqlSessionFactory;
 	}

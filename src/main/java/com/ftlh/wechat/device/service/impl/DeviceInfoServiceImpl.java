@@ -1,6 +1,7 @@
 package com.ftlh.wechat.device.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +25,9 @@ public class DeviceInfoServiceImpl implements DeviceInfoServiceI {
 	public int insertSelective(DeviceInfo record) {
 		return mapper.insertSelective(record);
 	};
-@Transactional
+
+	@Transactional
+	@Cacheable(value = "cacheDevice", key = "#id")
 	public DeviceInfo selectByPrimaryKey(Long id) {
 		return mapper.selectByPrimaryKey(id);
 	};
