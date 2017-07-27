@@ -13,65 +13,29 @@
 		
 	<context:component-scan base-package="com.ftlh.wechat.http" />
 	<context:component-scan base-package="com.ftlh.wechat.api" />
+	<context:component-scan base-package="com.ftlh.wechat.appconfig" />
 	<!-- Root Context: defines shared resources visible to all other web components -->
     <context:component-scan base-package="com.ftlh.wechat.device.service" />
 	<context:component-scan base-package="com.ftlh.wechat.device.service.impl" />
 	<context:component-scan base-package="com.ftlh.wechat.device.model" />
 	<context:property-placeholder
-		location="classpath:com/ftlh/wechat/device/config/config.properties" />
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
-		init-method="init" destroy-method="close">
-		<!-- 基本属性 url、user、password -->
-		<property name="url" value="${jdbc_url}" />
-		<property name="username" value="${jdbc_user}" />
-		<property name="password" value="${jdbc_password}" />
-
-		<!-- 配置初始化大小、最小、最大 -->
-		<property name="initialSize" value="5" />
-		<property name="minIdle" value="10" />
-		<property name="maxActive" value="20" />
-
-		<!-- 配置获取连接等待超时的时间 -->
-		<property name="maxWait" value="60000" />
-
-		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-		<property name="timeBetweenEvictionRunsMillis" value="60000" />
-
-		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-		<property name="minEvictableIdleTimeMillis" value="300000" />
-
-		<property name="validationQuery" value="SELECT 'x'" />
-		<property name="testWhileIdle" value="true" />
-		<property name="testOnBorrow" value="false" />
-		<property name="testOnReturn" value="false" />
-
-		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-		<property name="poolPreparedStatements" value="true" />
-		<property name="maxPoolPreparedStatementPerConnectionSize"
-			value="20" />
-
-		<!-- 配置监控统计拦截的filters -->
-		<property name="filters" value="stat" />
-	</bean>
+		location="classpath:com/ftlh/wechat/device/config/config.properties" />	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="druid-stat-interceptor"
 		class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
 	</bean>
 
-
-
-
-	<!-- 慢SQL记录 -->
+	<!-- 慢SQL记录 
 	<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
 		<property name="slowSqlMillis" value="10000" />
 		<property name="logSlowSql" value="true" />
-	</bean>
-	<!-- myBatis文件 -->
+	</bean>-->
+	<!-- myBatis文件 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="configLocation"
 			value="classpath:com/ftlh/wechat/device/config/mybatis-config.xml" />
-		<property name="dataSource" ref="dataSource" />
-		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="dataSource" ref="dataSource" />-->
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置
 		<property name="mapperLocations" value="classpath:com/ftlh/wechat/device/mapping/*.xml" />
 	</bean>
 
@@ -79,17 +43,17 @@
 		<property name="basePackage" value="com.ftlh.wechat.device.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
-
-	<!-- 配置事务管理器 -->
+ -->
+	<!-- 配置事务管理器
 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 
 	</bean>
-
-	<!-- 注解方式配置事物 -->
-	 <tx:annotation-driven transaction-manager="transactionManager" />
+ -->
+	<!-- 注解方式配置事物 -
+	 <tx:annotation-driven transaction-manager="transactionManager" />-->
 
 	<!-- 拦截器方式配置事物 
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
