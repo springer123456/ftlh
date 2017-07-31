@@ -34,9 +34,9 @@ public class SendData2DeviceService {
 		 params.put("device_id",device_id);
 		 params.put("open_id",open_id);
 		 params.put("content",base64content);
-		 System.err.println(JSON.toJSONString(params));
+		// System.err.println(JSON.toJSONString(params));
 		 String url =PropertyUtil.getProperty("postdataurl")+"access_token="+access_token;
-		 System.err.println("url =="+url);
+		// System.err.println("url =="+url);
 		 HttpResult returnstring = null;
 		try {
 			returnstring = service.doPostJson(url, JSON.toJSONString(params));
@@ -49,7 +49,6 @@ public class SendData2DeviceService {
 	 }
 	 
 	 public String setDeviceTime(String open_id,String device_id,String device_type){
-
 		 String base64value= DeviceBase64Util.bytes2Base64(DeviceBase64Util.setTime2DeviceData());		 
 		 HashMap<String, String> params = new HashMap<>();
 		 params.put("device_type",device_type);
@@ -61,5 +60,7 @@ public class SendData2DeviceService {
 		 _SendData2DeviceService(open_id, base64value, device_id, device_type);
 	 }
 	 
+	 
 	
+	 
 }
