@@ -19,7 +19,7 @@ public class AccessTokenUtil {
 	@Autowired
 	private HttpClientService service;
 	private static final Logger logger = LoggerFactory.getLogger(AccessToken.class);
-    
+
 	public AccessToken getAccessToken() {
 		String appid = PropertyUtil.getProperty("appid");
 		String secret = PropertyUtil.getProperty("secret");
@@ -98,7 +98,7 @@ public class AccessTokenUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		ticket = JSON.parseObject(res, JsApiTicket.class);
 		return ticket;
 	}

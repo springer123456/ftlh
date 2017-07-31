@@ -27,7 +27,7 @@ public class DeviceInfoServiceImpl implements DeviceInfoServiceI {
 	};
 
 	@Transactional
-	@Cacheable(value = "cacheDevice", key = "#id")
+	@Cacheable(value = "USERCACHE", key = "#id")
 	public DeviceInfo selectByPrimaryKey(Long id) {
 		return mapper.selectByPrimaryKey(id);
 	};

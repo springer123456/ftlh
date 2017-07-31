@@ -13,9 +13,11 @@ import java.util.Map;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Case;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +26,8 @@ import com.alibaba.fastjson.JSON;
 import com.ftlh.wechat.api.AccessTokenService;
 import com.ftlh.wechat.api.JsApiSign;
 import com.ftlh.wechat.http.PropertyUtil;
+import com.ftlh.wechat.util.DeviceBase64Util;
+import com.sun.xml.internal.ws.client.SenderException;
 import com.ftlh.wechat.api.message.*;
 import com.ftlh.wechat.api.message.SerializeXmlUtil;
 import com.ftlh.wechat.api.message.WechatInPutMsg;
@@ -45,8 +49,8 @@ public class WechatBtController {
 		WechatInPutMsg inputMsg = GetxmlMessage(request);
 		System.err.println(JSON.toJSONString(inputMsg));
 		// 基本信息
-		String servername = inputMsg.getToUserName(); // 服务端
-		String customername = inputMsg.getFromUserName(); // 客户端
+		String touser = inputMsg.getToUserName(); // 服务端
+		String formuser = inputMsg.getFromUserName(); // 客户端
 		long createTime = inputMsg.getCreateTime(); // 接收时间
 		Long returnTime = Calendar.getInstance().getTimeInMillis() / 1000;// 返回时间
 		StringBuilder str = null;// new StringBuilder(); // 返回的消息
@@ -70,6 +74,14 @@ public class WechatBtController {
 				break;
 			}
 
+		case WxMessage_Type.DEVICE_TEXT:
+			
+			String base64content = inputMsg.getContent();
+			if(base64content!=null){
+			byte[] content = Base64Utils.decodeFromString(base64content);
+			
+			}
+			
 		default:
 			break;
 		}
@@ -144,7 +156,7 @@ public class WechatBtController {
 		}
 		logger.debug("********************headers end**********************\n");
 
-		System.err.println("================form wx============\n" + xmlMsg.toString());
+		logger.info("================form wx============\n" + xmlMsg.toString());
 		// 将xml内容转换为InputMessage对象
 		WechatInPutMsg inputMsg = (WechatInPutMsg) xs.fromXML(xmlMsg.toString());
 		logger.debug("==================================after formate==========================\n"
@@ -209,7 +221,10 @@ public class WechatBtController {
 		public static final String EVENT_VIEW = "VIEW";
 		public static final String EVENT_UNSUBSCRIBE = "unsubscribe";
 		public static final String EVENT_TEMPLATESENDJOBFINISH = "TEMPLATESENDJOBFINISH";
+		public static final String DEVICE_TEXT ="device_text";
+		
 
 		// public static final String ;
 	}
+	
 }

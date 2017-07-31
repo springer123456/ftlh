@@ -1,6 +1,5 @@
 package com.ftlh.wechat.http;
 
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -25,13 +24,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
 @Service
 public class HttpClientService {
 
-	
-	
 	private static final Logger logger = LoggerFactory.getLogger(HttpClientService.class);
 
 	@Autowired
@@ -49,7 +44,8 @@ public class HttpClientService {
 	 */
 	public String doGet(String url) throws ClientProtocolException, IOException {
 		// 创建http GET请求
-	//	logger.info("[Thread id of doget ===%s]"+Thread.currentThread().getId());
+		// logger.info("[Thread id of doget
+		// ===%s]"+Thread.currentThread().getId());
 		HttpGet httpGet = new HttpGet(url);
 		httpGet.setConfig(this.requestConfig);
 
@@ -112,6 +108,7 @@ public class HttpClientService {
 			UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(parameters, "UTF-8");
 			// 将请求实体设置到httpPost对象中
 			httpPost.setEntity(formEntity);
+			logger.debug(formEntity.toString());
 		}
 
 		CloseableHttpResponse response = null;

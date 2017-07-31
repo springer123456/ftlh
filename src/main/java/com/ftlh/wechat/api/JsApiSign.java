@@ -8,9 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-
-
-
 public class JsApiSign {
 	/***
 	 * 获取界面调用jsapi的所需参数
@@ -19,7 +16,7 @@ public class JsApiSign {
 	 *            凭据
 	 * @param url
 	 *            界面请求地址
-	 * @return 
+	 * @return
 	 */
 	public static Map<String, String> sign(String jsapi_ticket, String url) {
 		Map<String, String> ret = new HashMap<String, String>();

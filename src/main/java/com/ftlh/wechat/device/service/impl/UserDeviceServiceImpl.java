@@ -14,31 +14,31 @@ public class UserDeviceServiceImpl implements UserDeviceServiceI {
 
 	@Override
 	public int deleteByPrimaryKey(String openid) {
- 
+
 		return mapper.deleteByPrimaryKey(openid);
 	}
 
 	@Override
 	public int insert(UserDevice record) {
- 
+
 		return mapper.insert(record);
 	}
 
 	@Override
 	public int insertSelective(UserDevice record) {
- 
+
 		return mapper.insertSelective(record);
 	}
 
 	@Override
 	public UserDevice selectByPrimaryKey(String openid) {
- 
+
 		return mapper.selectByPrimaryKey(openid);
 	}
 
 	@Override
 	public int updateByPrimaryKeySelective(UserDevice record) {
- 
+
 		return mapper.updateByPrimaryKeySelective(record);
 	}
 

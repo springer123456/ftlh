@@ -84,7 +84,8 @@ public class HttpClientPollConfig {
 
 	@Bean
 	HttpClientConnectionManager gethttpClientConnectionManager() {
-		HttpClientConnectionManager clientConnectionManager = new PoolingHttpClientConnectionManager(getSoketFactoryRegistry());
+		HttpClientConnectionManager clientConnectionManager = new PoolingHttpClientConnectionManager(
+				getSoketFactoryRegistry());
 		((PoolingHttpClientConnectionManager) clientConnectionManager).setMaxTotal(HTTPCLIENT_CONNECTION_COUNT);
 		// 设置单个路由最大连接数量
 		((PoolingHttpClientConnectionManager) clientConnectionManager)

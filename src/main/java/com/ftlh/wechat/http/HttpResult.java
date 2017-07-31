@@ -1,7 +1,11 @@
 package com.ftlh.wechat.http;
 
-
 public class HttpResult {
+
+	@Override
+	public String toString() {
+		return "HttpResult [status=" + status + ", data=" + data + "]";
+	}
 
 	/**
 	 * 状态码
