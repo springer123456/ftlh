@@ -9,6 +9,7 @@
 # 忽略所有.o和 .a文件.
 *.[oa]
 .classpath
-
+target
+.settings
 
 /.settings/
