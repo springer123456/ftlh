@@ -21,6 +21,28 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<annotation-driven>  
+        <message-converters>  
+         <beans:bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+         <beans:property name="supportedMediaTypes">
+            <beans:list>
+               <beans:value>application/json</beans:value>
+               <beans:value>text/html;charset=UTF-8</beans:value>
+            </beans:list>
+         </beans:property>
+         <beans:property name="features">
+            <beans:list>
+       <!--        <beans:value>WriteMapNullValue</beans:value> --> 
+               <beans:value>QuoteFieldNames</beans:value>
+               <beans:value>BrowserCompatible</beans:value>
+            </beans:list>
+         </beans:property>
+      </beans:bean>
+            <beans:bean class="org.springframework.http.converter.StringHttpMessageConverter" />  
+            <beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />  
+        </message-converters>  
+</annotation-driven>
+	
 	<context:component-scan base-package="com.ftlh.wechat.controller" >
 	<!--  -->
 	</context:component-scan>

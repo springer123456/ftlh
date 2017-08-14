@@ -11,8 +11,12 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.ftlh.wechat">
-		<level value="info" />
+	<logger name="com.ftlh.wechat.device">
+		<level value="debug" />
+	</logger>
+	
+		<logger name="com.ftlh.wechat.controller">
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -29,7 +33,7 @@
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 
 	<!-- Root Logger -->

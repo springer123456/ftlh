@@ -31,6 +31,7 @@ import com.sun.xml.internal.ws.client.SenderException;
 import com.ftlh.wechat.api.message.*;
 import com.ftlh.wechat.api.message.SerializeXmlUtil;
 import com.ftlh.wechat.api.message.WechatInPutMsg;
+import com.ftlh.wechat.controller.dto.WechatDto;
 import com.thoughtworks.xstream.XStream;
 
 @RestController
@@ -45,9 +46,11 @@ public class WechatBtController {
 
 	public String wxbt(HttpServletRequest request) {
 
-		// 处理接收消息
-		WechatInPutMsg inputMsg = GetxmlMessage(request);
-		System.err.println(JSON.toJSONString(inputMsg));
+		// 处理接收xml消息,转换为java bean 
+		WechatInPutMsg inputMsg = GetJsonMessage(request);
+		if (logger.isDebugEnabled ()){
+			logger.debug("get message form wx:"+inputMsg.toString());
+		}
 		// 基本信息
 		String touser = inputMsg.getToUserName(); // 服务端
 		String formuser = inputMsg.getFromUserName(); // 客户端
@@ -89,6 +92,31 @@ public class WechatBtController {
 
 	}
 
+	private WechatInPutMsg GetJsonMessage(HttpServletRequest request) {
+		//获取到内容
+		BufferedReader br = null;
+		try {
+			br = request.getReader();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String inputLine;
+		StringBuilder str = new StringBuilder();// "";
+		try {
+			while ((inputLine = br.readLine()) != null) {
+				str.append(inputLine);
+			}
+			br.close();
+		} catch (IOException e) {
+			System.out.println("IOException: " + e);
+		}
+		logger.info(str.toString());
+		
+		WechatInPutMsg jsonObject = (WechatInPutMsg) JSON.parseObject(str.toString(), WechatInPutMsg.class);
+		return jsonObject;
+	}
+
 	@RequestMapping("/wx")
 
 	public String wx(HttpServletRequest request) {
@@ -121,6 +149,30 @@ public class WechatBtController {
 	 * @return InputMessage 微信公众平台发送的xml转换为java对象之后的消息
 	 */
 	private WechatInPutMsg GetxmlMessage(HttpServletRequest request) {
+		
+		//orgin
+		
+		BufferedReader br = null;
+		try {
+			br = request.getReader();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String inputLine;
+		StringBuilder str = new StringBuilder();//"";
+		try {
+			while ((inputLine = br.readLine()) != null) {
+				str.append(inputLine);
+			}
+			br.close();
+		} catch (IOException e) {
+			System.out.println("IOException: " + e);
+		}
+		logger.info("we got form request ==="+str.toString());
+		//end orgin
+		
+		
 		ServletInputStream in = null;
 		try {
 			in = request.getInputStream();
@@ -140,10 +192,9 @@ public class WechatBtController {
 				xmlMsg.append(new String(b, 0, n, "UTF-8"));
 			}
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -155,11 +206,11 @@ public class WechatBtController {
 			System.out.println(name + " = " + value + "\n");
 		}
 		logger.debug("********************headers end**********************\n");
-
-		logger.info("================form wx============\n" + xmlMsg.toString());
+       
+		logger.info("origin data==form wx=====\n" + xmlMsg.toString());
 		// 将xml内容转换为InputMessage对象
-		WechatInPutMsg inputMsg = (WechatInPutMsg) xs.fromXML(xmlMsg.toString());
-		logger.debug("==================================after formate==========================\n"
+		 WechatInPutMsg inputMsg = (WechatInPutMsg) xs.fromXML(xmlMsg.toString());
+		logger.debug("=====================after formate==========================\n"
 				+ JSON.toJSONString(inputMsg));
 		return inputMsg;
 	}
